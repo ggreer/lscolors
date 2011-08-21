@@ -60,9 +60,9 @@ function changeColor(color,isBackground)
 //Make text bold (basically capitalize it)
 function BoldText(isBackground)
 {
-   colors[currentColorIndex + isBackground] = colors[currentColorIndex + isBackground].toUpperCase();
+    colors[currentColorIndex + isBackground] = colors[currentColorIndex + isBackground].toUpperCase();
 
-   updateColorString();
+    updateColorString();
 }
 
 
@@ -70,9 +70,9 @@ function BoldText(isBackground)
 //(tolower the letter) 
 function unBoldText(isBackground)
 {
-   colors[currentColorIndex + isBackground] = colors[currentColorIndex + isBackground].toLowerCase();
+    colors[currentColorIndex + isBackground] = colors[currentColorIndex + isBackground].toLowerCase();
 
-   updateColorString();
+    updateColorString();
 }
 
 
@@ -131,7 +131,7 @@ function makePreview()
     {
         colors[i]=colorString.charAt(i);
     }
-    
+
     for (var i = 0; i < indexLength; i+=2)
     {
         divFontWeight = document.getElementById(divIDs[i/2]);
@@ -154,7 +154,6 @@ function makePreview()
         divBackground.style.backgroundColor = backgroundColor;
     }
 }
-
 
 
 function translateColor(color)
