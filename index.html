@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>
+LSCOLORS Generator
+    </title>
+
+    <link type="text/css" href="lscolors.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="lscolors.js">
+    </script>
+</head>
+
+<body onload="makePreview()">
+
+<table style="background-color: #ccccff; border: thin dotted #888888">
+    <tr>
+        <td>
+            <div class="graybox" style="text-align: right">
+            File type: 
+            </div>
+        </td>
+        <td>
+        <div class="colorPicker">
+            <select id="currentColorIndex" onchange="updateColorIndex()">
+                <option value="0">Directory</option>
+        		<option value="1">Symbolic link</option>
+        		<option value="2">Socket</option>
+        		<option value="3">Pipe</option>
+        		<option value="4">Executable</option>
+        		<option value="5">Block special</option>
+        		<option value="6">Character special</option>
+        		<option value="7">Setuid Executable</option>
+        		<option value="8">Setgid Executable</option>
+        		<option value="9">Directory writable to others, with sticky bit</option>
+        		<option value="10">Directory writable to others, no sticky bit</option>
+        	</select>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <div class="graybox" style="text-align: right">
+            Foreground color: 
+            </div>
+        </td>
+        <td>
+            <div class="colorPicker">
+                <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',0)" />
+                <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',0)" />
+                <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',0)" />
+                <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',0)" />
+                <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',0)" />
+                <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',0)" />
+                <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',0)" />
+                <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',0)" />
+                <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',0)" />
+            </div>
+        </td>
+        <td>
+            <div class="graybox">
+                <input id="isForegroundBold" type="checkbox" onclick="if(this.checked){BoldText(0)}else{unBoldText(0)}" />Bold
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="graybox" style="text-align: right">
+            Background color: 
+            </div>
+        </td>
+        <td>
+            <div class="colorPicker">
+                <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',1)" />
+                <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',1)" />
+                <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',1)" />
+                <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',1)" />
+                <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',1)" />
+                <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',1)" />
+                <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',1)" />
+                <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',1)" />
+                <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',1)" />
+            </div>
+        </td>
+        <td>
+            <div class="graybox">
+                <input id="isBackgroundBold" type="checkbox" onclick="if(this.checked){BoldText(1)}else{unBoldText(1)}" />Bold
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; font-family: monospace">BSD LSCOLORS=</td>
+        <td>
+            <input style="font-family: monospace" id="colorStringBSD" type="text" value="exfxcxdxbxegedabagacad" maxlength="22" size="23" onchange="makePreview('BSD')"/>
+        </td>
+        <td>
+            <input type="button" value="preview" onclick="makePreview('BSD')" />
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; font-family: monospace">Linux LS_COLORS=</td>
+        <td>
+            <input style="font-family: monospace" id="colorStringLinux" type="text" value="" size="35" onchange="makePreview('Linux')"/>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+
+<p>
+<br />
+</p>
+
+<table class="fixed">
+    <tr>
+        <td style="font-family: monospace; white-space: pre">blah:~/color_test root# ls -l
+total 8
+drwxr-xr-x    2 root   root         68 Jul 31 15:52 
+lrwxr-xr-x    1 root   root          9 Jul 31 15:52 
+srw-r--r--    1 root   root          0 Jul 31 15:53 
+prw-r--r--    1 root   root          0 Jul 31 15:53 
+-rwxrwxrwx    1 root   root          0 Jul 31 15:52 
+brw-r--r--    1 root   root    14,   0 Jul 31 15:52 
+crw-r--r--    1 root   root     3,   2 Jul 31 15:52 
+-rwsrwxrwx    1 root   root          0 Jul 31 15:52 
+-rwxrwsrwx    1 root   root          0 Jul 31 15:52 
+drwxrwxrwt    2 root   root         68 Jul 31 15:52 
+drwxrwxrwx    2 root   root         68 Jul 31 15:52 
+blah:~/color_test root# <span id="cursor"> </span></td>
+        <td>
+            <br />
+            <span id="directory" class="ls">1-directory</span><br />
+            <span id="system_link" class="ls">2-system_link -> /dev/null</span><br />
+            <span id="socket" class="ls">3-socket</span><br />
+            <span id="pipe" class="ls">4-pipe</span><br />
+            <span id="executable" class="ls">5-executable</span><br />
+            <span id="block_special" class="ls">6-block_special</span><br />
+            <span id="char_special" class="ls">7-char_special</span><br />
+            <span id="exe_setuid" class="ls">8-exe_setuid</span><br />
+            <span id="exe_setgid" class="ls">9-exe_setgid</span><br />
+            <span id="dir_writeothers_sticky" class="ls">a-dir_writeothers_sticky</span><br />
+            <span id="dir_writeothers_nosticky" class="ls">b-dir_writeothers_NOsticky</span><br />
+        </td>
+    </tr>
+</table>
+
+<p>
+    <a href="http://validator.w3.org/check?uri=referer">
+    <img style="border:0"
+         src="http://www.w3.org/Icons/valid-xhtml10"
+         alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img style="border:0;width:88px;height:31px"
+         src="http://jigsaw.w3.org/css-validator/images/vcss" 
+         alt="Valid CSS!" /></a>
+</p>
+
+</body>
+</html>
