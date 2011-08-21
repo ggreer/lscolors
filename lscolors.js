@@ -4,7 +4,7 @@
  */
 
 
-//I hate global variables, but these are necessary
+// I hate global variables, but these are necessary
 var currentColorIndex = 0;
 var indexLength = 22;
 var colors = new Array('e','x','f','x','c','x','d','x','b','x','e','g','e','d','a','b','a','g','a','c','a','d');
@@ -127,12 +127,12 @@ function makePreview()
     var colorStringLinux = translateColorToLinux(colorString);
     document.getElementById("colorStringLinux").value=colorStringLinux;
 
-    for (var i = 0; i < indexLength; i++)
+    for (i = 0; i < indexLength; i++)
     {
         colors[i]=colorString.charAt(i);
     }
 
-    for (var i = 0; i < indexLength; i+=2)
+    for (i = 0; i < indexLength; i+=2)
     {
         divFontWeight = document.getElementById(divIDs[i/2]);
 
@@ -238,7 +238,7 @@ function translateColorToLinux(colorString)
         }
 
         //Linux LSCOLORS has different codes for foreground/background colors :/
-        if (i % 2 == 0) {
+        if (i % 2 === 0) {
             //If bold, add bold thingy
             if(color == color.toUpperCase())
                 linuxColorString += "1;";
