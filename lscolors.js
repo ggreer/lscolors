@@ -134,9 +134,9 @@ function makePreview()
     
     for (var i = 0; i < indexLength; i+=2)
     {
-	    divFontWeight = document.getElementById(divIDs[i/2]);
+        divFontWeight = document.getElementById(divIDs[i/2]);
 
- 	    if(isBold(i))
+        if(isBold(i))
         {
             divFontWeight.style.fontWeight = "bold";
         }
