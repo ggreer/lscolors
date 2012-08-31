@@ -115,34 +115,20 @@ LSCOLORS Generator
 
 <table class="fixed">
     <tr>
-        <td style="font-family: monospace; white-space: pre">blah:~/color_test root# ls -l
+        <td>blah:~/color_test root# ls -l
 total 8
-drwxr-xr-x    2 root   root         68 Jul 31 15:52 
-lrwxr-xr-x    1 root   root          9 Jul 31 15:52 
-srw-r--r--    1 root   root          0 Jul 31 15:53 
-prw-r--r--    1 root   root          0 Jul 31 15:53 
--rwxrwxrwx    1 root   root          0 Jul 31 15:52 
-brw-r--r--    1 root   root    14,   0 Jul 31 15:52 
-crw-r--r--    1 root   root     3,   2 Jul 31 15:52 
--rwsrwxrwx    1 root   root          0 Jul 31 15:52 
--rwxrwsrwx    1 root   root          0 Jul 31 15:52 
-drwxrwxrwt    2 root   root         68 Jul 31 15:52 
-drwxrwxrwx    2 root   root         68 Jul 31 15:52 
+drwxr-xr-x    2 root   root         68 Jul 31 15:52     <span id="directory" class="ls">1-directory</span>
+lrwxr-xr-x    1 root   root          9 Jul 31 15:52     <span id="system_link" class="ls">2-system_link -> /dev/null</span>
+srw-r--r--    1 root   root          0 Jul 31 15:53     <span id="socket" class="ls">3-socket</span>
+prw-r--r--    1 root   root          0 Jul 31 15:53     <span id="pipe" class="ls">4-pipe</span>
+-rwxrwxrwx    1 root   root          0 Jul 31 15:52     <span id="executable" class="ls">5-executable</span>
+brw-r--r--    1 root   root    14,   0 Jul 31 15:52     <span id="block_special" class="ls">6-block_special</span>
+crw-r--r--    1 root   root     3,   2 Jul 31 15:52     <span id="char_special" class="ls">7-char_special</span>
+-rwsrwxrwx    1 root   root          0 Jul 31 15:52     <span id="exe_setuid" class="ls">8-exe_setuid</span>
+-rwxrwsrwx    1 root   root          0 Jul 31 15:52     <span id="exe_setgid" class="ls">9-exe_setgid</span>
+drwxrwxrwt    2 root   root         68 Jul 31 15:52     <span id="dir_writeothers_sticky" class="ls">a-dir_writeothers_sticky</span>
+drwxrwxrwx    2 root   root         68 Jul 31 15:52     <span id="dir_writeothers_nosticky" class="ls">b-dir_writeothers_NOsticky</span>
 blah:~/color_test root# <span id="cursor"> </span></td>
-        <td>
-            <br />
-            <span id="directory" class="ls">1-directory</span><br />
-            <span id="system_link" class="ls">2-system_link -> /dev/null</span><br />
-            <span id="socket" class="ls">3-socket</span><br />
-            <span id="pipe" class="ls">4-pipe</span><br />
-            <span id="executable" class="ls">5-executable</span><br />
-            <span id="block_special" class="ls">6-block_special</span><br />
-            <span id="char_special" class="ls">7-char_special</span><br />
-            <span id="exe_setuid" class="ls">8-exe_setuid</span><br />
-            <span id="exe_setgid" class="ls">9-exe_setgid</span><br />
-            <span id="dir_writeothers_sticky" class="ls">a-dir_writeothers_sticky</span><br />
-            <span id="dir_writeothers_nosticky" class="ls">b-dir_writeothers_NOsticky</span><br />
-        </td>
     </tr>
 </table>
 
