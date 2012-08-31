@@ -4,6 +4,7 @@ table.fixed
     font-family: monospace;
     font-size: 10pt;
     padding: 0px;
+    white-space: pre;
 }
 
 div.graybox
