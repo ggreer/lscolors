@@ -9,8 +9,6 @@ div.fixed
 
 div.graybox
 {
-    background-color: #ddddff;
-    color: black;
     padding: 2px;
     height: 30px;
     vertical-align: middle;
@@ -18,8 +16,6 @@ div.graybox
 
 div.colorPicker
 {
-    background-color: #ddddff;
-    color: black;
     padding: 2px;
     height: 30px;
     text-align: center;
@@ -35,8 +31,6 @@ div.ls
 
 span#cursor
 {
-    background-color: #000000;
-    color: #ffffff;
     font-family: monospace;
     white-space: pre;
 }
