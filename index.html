@@ -11,39 +11,38 @@ LSCOLORS Generator
 
     <link type="text/css" href="lscolors.css" rel="stylesheet" />
     <link id="main-css" rel="stylesheet" type="text/css" media="all" href="/styles/main.css" />
-
-    <script type="text/javascript">
-    var link_tag = document.getElementById("main-css");
-    function set_colors() {
-      document.cookie.split("; ").forEach(function (cookie) {
-        var key = cookie.split("=")[0];
-        var value = cookie.split("=")[1];
-        if (key === "main-css" && value === "/styles/main-inverted.css") {
-          window.addEventListener("load", function () {
-            link_tag.attributes.href.value = "/styles/main-inverted.css";
-          });
-        }
-      });
-    }
-    function invert_colors() {
-      var css_file;
-      if (link_tag.attributes.href.value === "/styles/main.css") {
-        css_file = "/styles/main-inverted.css";
-      } else {
-        css_file = "/styles/main.css";
-      }
-      link_tag.href = css_file;
-      var date = new Date();
-      date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-      document.cookie = "main-css=" + css_file + "; expires=" + date.toGMTString() + "; path=/";
-    }
-    set_colors();
-    </script>
     <script type="text/javascript" src="lscolors.js">
     </script>
 </head>
 
 <body onload="makePreview()">
+  <script type="text/javascript">
+  var main_css = document.getElementById("main-css");
+  function set_colors() {
+    document.cookie.split("; ").forEach(function (cookie) {
+      var key = cookie.split("=")[0];
+      var value = cookie.split("=")[1];
+      if (key === "main-css" && value === "/styles/main-inverted.css") {
+        document.body.style.background = "#000";
+        main_css.attributes.href.value = "/styles/main-inverted.css";
+      }
+    });
+  }
+  function invert_colors() {
+    var css_file;
+    if (main_css.attributes.href.value === "/styles/main.css") {
+      css_file = "/styles/main-inverted.css";
+    } else {
+      css_file = "/styles/main.css";
+    }
+    main_css.attributes.href.value = css_file;
+    document.body.style.background = "";
+    var date = new Date();
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+    document.cookie = "main-css=" + css_file + "; expires=" + date.toGMTString() + "; path=/";
+  }
+  set_colors();
+  </script>
 <div id="header">
     <ul>
         <li><a id="home-link" href="/">Geoff Greer</a></li>
