@@ -18,28 +18,32 @@ LSCOLORS Generator
 <body onload="makePreview()">
   <script type="text/javascript">
   var main_css = document.getElementById("main-css");
+  var code_css = document.getElementById("code-css");
+  var light_style = ["", "/styles/main.css"];
+  var dark_style = ["#000", "/styles/main-inverted.css"];
+  function set_style(style) {
+    var date = new Date();
+    document.body.style.background = style[0];
+    main_css.attributes.href.value = style[1];
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+    document.cookie = "main-css=" + main_css.attributes.href.value + "; expires=" + date.toGMTString() + "; path=/";
+  }
   function set_colors() {
     document.cookie.split("; ").forEach(function (cookie) {
       var key = cookie.split("=")[0];
       var value = cookie.split("=")[1];
       if (key === "main-css" && value === "/styles/main-inverted.css") {
-        document.body.style.background = "#000";
-        main_css.attributes.href.value = "/styles/main-inverted.css";
+        set_style(dark_style);
       }
     });
+    if (window.location.hash.slice(1) === "dark") {
+      set_style(dark_style);
+    } else if (window.location.hash.slice(1) === "light") {
+      set_style(light_style);
+    }
   }
   function invert_colors() {
-    var css_file;
-    if (main_css.attributes.href.value === "/styles/main.css") {
-      css_file = "/styles/main-inverted.css";
-    } else {
-      css_file = "/styles/main.css";
-    }
-    main_css.attributes.href.value = css_file;
-    document.body.style.background = "";
-    var date = new Date();
-    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-    document.cookie = "main-css=" + css_file + "; expires=" + date.toGMTString() + "; path=/";
+    main_css.attributes.href.value === "/styles/main.css" ? set_style(dark_style) : set_style(light_style);
   }
   set_colors();
   </script>
