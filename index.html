@@ -17,33 +17,40 @@ LSCOLORS Generator
 
 <body onload="makePreview()">
   <script type="text/javascript">
+  var _gaq = _gaq || [];
   var main_css = document.getElementById("main-css");
   var code_css = document.getElementById("code-css");
-  var light_style = ["", "/styles/main.css"];
-  var dark_style = ["#000", "/styles/main-inverted.css"];
+  var styles = {
+    light: ["Light", "", "/styles/main.css", "/styles/solarized-light.css"],
+    dark: ["Dark", "#000", "/styles/main-inverted.css", "/styles/solarized-dark.css"]
+  };
   function set_style(style) {
     var date = new Date();
-    document.body.style.background = style[0];
-    main_css.attributes.href.value = style[1];
+    _gaq.push(["_setCustomVar", 1, "Color", style[0], 1]);
+    document.body.style.background = style[1];
+    main_css.attributes.href.value = style[2];
+    code_css.attributes.href.value = style[3];
     date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "main-css=" + main_css.attributes.href.value + "; expires=" + date.toGMTString() + "; path=/";
+    return style;
   }
   function set_colors() {
     document.cookie.split("; ").forEach(function (cookie) {
       var key = cookie.split("=")[0];
       var value = cookie.split("=")[1];
       if (key === "main-css" && value === "/styles/main-inverted.css") {
-        set_style(dark_style);
+        set_style(styles.dark);
       }
     });
     if (window.location.hash.slice(1) === "dark") {
-      set_style(dark_style);
+      set_style(styles.dark);
     } else if (window.location.hash.slice(1) === "light") {
-      set_style(light_style);
+      set_style(styles.light);
     }
   }
   function invert_colors() {
-    main_css.attributes.href.value === "/styles/main.css" ? set_style(dark_style) : set_style(light_style);
+    var style = main_css.attributes.href.value === "/styles/main.css" ? set_style(styles.dark) : set_style(styles.light);
+    _gaq.push(["_trackEvent", "Color", "Set style", style[0]]);
   }
   set_colors();
   </script>
@@ -176,8 +183,6 @@ blah:~/color_test root# <span id="cursor"> </span>
     <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
 </p>
 <script type="text/javascript">
-
-  var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-16016300-1']);
   _gaq.push(['_trackPageview']);
 
@@ -186,7 +191,6 @@ blah:~/color_test root# <span id="cursor"> </span>
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 </div>
 </body>
