@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>
 LSCOLORS Generator
-    </title>
-    <meta name="author" content="Geoff Greer" />
-    <meta name="viewport" content="width=device-width" />
+  </title>
+  <meta name="author" content="Geoff Greer" />
+  <meta name="viewport" content="width=device-width" />
 
-    <link type="text/css" href="lscolors.css" rel="stylesheet" />
-    <link id="main-css" rel="stylesheet" type="text/css" media="all" href="/styles/main.css" />
-    <script type="text/javascript" src="lscolors.js">
-    </script>
+  <link type="text/css" href="lscolors.css" rel="stylesheet" />
+  <link id="main-css" rel="stylesheet" type="text/css" media="all" href="/styles/main.css" />
+  <script type="text/javascript" src="lscolors.js">
+  </script>
 </head>
 
 <body onload="makePreview()">
@@ -57,108 +57,108 @@ LSCOLORS Generator
   //]]>
   </script>
 <div id="header">
-    <ul>
-        <li><a id="home-link" href="/">Geoff Greer</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/about/">About Me</a></li>
-    </ul>
+  <ul>
+    <li><a id="home-link" href="/">Geoff Greer</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/about/">About Me</a></li>
+  </ul>
 </div>
 <div id="wrapper">
 <hr />
 <br />
 <table style="background-color: #aaa; border: thin dotted #555; margin: 0px auto;">
-    <tr>
-        <td>
-            <div class="graybox" style="text-align: right">
-            File type: 
-            </div>
-        </td>
-        <td>
-        <div class="colorPicker">
-            <select id="currentColorIndex" onchange="updateColorIndex()">
-                <option value="0">Directory</option>
-                <option value="1">Symbolic link</option>
-                <option value="2">Socket</option>
-                <option value="3">Pipe</option>
-                <option value="4">Executable</option>
-                <option value="5">Block special</option>
-                <option value="6">Character special</option>
-                <option value="7">Setuid Executable</option>
-                <option value="8">Setgid Executable</option>
-                <option value="9">Directory writable to others, with sticky bit</option>
-                <option value="10">Directory writable to others, no sticky bit</option>
-            </select>
-        </div>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>
-            <div class="graybox" style="text-align: right">
-            Foreground:
-            </div>
-        </td>
-        <td>
-            <div class="colorPicker">
-                <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',0)" />
-                <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',0)" />
-                <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',0)" />
-                <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',0)" />
-                <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',0)" />
-                <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',0)" />
-                <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',0)" />
-                <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',0)" />
-                <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',0)" />
-            </div>
-        </td>
-        <td>
-            <div class="graybox">
-                <input id="isForegroundBold" type="checkbox" onclick="if(this.checked){BoldText(0)}else{unBoldText(0)}" />Bold
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="graybox" style="text-align: right">
-            Background:
-            </div>
-        </td>
-        <td>
-            <div class="colorPicker">
-                <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',1)" />
-                <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',1)" />
-                <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',1)" />
-                <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',1)" />
-                <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',1)" />
-                <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',1)" />
-                <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',1)" />
-                <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',1)" />
-                <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',1)" />
-            </div>
-        </td>
-        <td>
-            <div class="graybox">
-                <input id="isBackgroundBold" type="checkbox" onclick="if(this.checked){BoldText(1)}else{unBoldText(1)}" />Bold
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td style="text-align: right; font-family: monospace">BSD LSCOLORS=</td>
-        <td>
-            <input style="font-family: monospace" id="colorStringBSD" type="text" value="exfxcxdxbxegedabagacad" maxlength="22" size="23" onchange="makePreview('BSD')"/>
-        </td>
-        <td>
-            <input type="button" value="preview" onclick="makePreview('BSD')" />
-        </td>
-    </tr>
-    <tr>
-        <td style="text-align: right; font-family: monospace">Linux LS_COLORS=</td>
-        <td>
-            <input style="font-family: monospace" id="colorStringLinux" type="text" value="" size="35" onchange="makePreview('Linux')"/>
-        </td>
-        <td>
-        </td>
-    </tr>
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      File type: 
+      </div>
+    </td>
+    <td>
+    <div class="colorPicker">
+      <select id="currentColorIndex" onchange="updateColorIndex()">
+        <option value="0">Directory</option>
+        <option value="1">Symbolic link</option>
+        <option value="2">Socket</option>
+        <option value="3">Pipe</option>
+        <option value="4">Executable</option>
+        <option value="5">Block special</option>
+        <option value="6">Character special</option>
+        <option value="7">Setuid Executable</option>
+        <option value="8">Setgid Executable</option>
+        <option value="9">Directory writable to others, with sticky bit</option>
+        <option value="10">Directory writable to others, no sticky bit</option>
+      </select>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      Foreground:
+      </div>
+    </td>
+    <td>
+      <div class="colorPicker">
+        <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',0)" />
+        <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',0)" />
+        <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',0)" />
+        <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',0)" />
+        <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',0)" />
+        <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',0)" />
+        <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',0)" />
+        <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',0)" />
+        <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',0)" />
+      </div>
+    </td>
+    <td>
+      <div class="graybox">
+        <input id="isForegroundBold" type="checkbox" onclick="if(this.checked){BoldText(0)}else{unBoldText(0)}" />Bold
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      Background:
+      </div>
+    </td>
+    <td>
+      <div class="colorPicker">
+        <img alt="Black" width="20" height="20" src="black.png" onclick="changeColor('a',1)" />
+        <img alt="Red" width="20" height="20" src="red.png" onclick="changeColor('b',1)" />
+        <img alt="Green" width="20" height="20" src="green.png" onclick="changeColor('c',1)" />
+        <img alt="Brown" width="20" height="20" src="brown.png" onclick="changeColor('d',1)" />
+        <img alt="Blue" width="20" height="20" src="blue.png" onclick="changeColor('e',1)" />
+        <img alt="Magenta" width="20" height="20" src="magenta.png" onclick="changeColor('f',1)" />
+        <img alt="Cyan" width="20" height="20" src="cyan.png" onclick="changeColor('g',1)" />
+        <img alt="Gray" width="20" height="20" src="gray.png" onclick="changeColor('h',1)" />
+        <img alt="Default" width="20" height="20" src="default.png" onclick="changeColor('x',1)" />
+      </div>
+    </td>
+    <td>
+      <div class="graybox">
+        <input id="isBackgroundBold" type="checkbox" onclick="if(this.checked){BoldText(1)}else{unBoldText(1)}" />Bold
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right; font-family: monospace">BSD LSCOLORS=</td>
+    <td>
+      <input style="font-family: monospace" id="colorStringBSD" type="text" value="exfxcxdxbxegedabagacad" maxlength="22" size="23" onchange="makePreview('BSD')"/>
+    </td>
+    <td>
+      <input type="button" value="preview" onclick="makePreview('BSD')" />
+    </td>
+</tr>
+<tr>
+    <td style="text-align: right; font-family: monospace">Linux LS_COLORS=</td>
+    <td>
+      <input style="font-family: monospace" id="colorStringLinux" type="text" value="" size="35" onchange="makePreview('Linux')"/>
+    </td>
+    <td>
+    </td>
+  </tr>
 </table>
 <br />
 
@@ -180,11 +180,11 @@ blah:~/color_test root# <span id="cursor"> </span>
 </div>
 
 <p>
-    <div id="beast-mode" onclick="invert_colors()">
-        <span>Invert colors.</span>
-    </div>
-    <a href="https://github.com/ggreer/lscolors">
-    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
+  <div id="beast-mode" onclick="invert_colors()">
+    <span>Invert colors.</span>
+  </div>
+  <a href="https://github.com/ggreer/lscolors">
+  <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
 </p>
 <script type="text/javascript">
 //<![CDATA[
