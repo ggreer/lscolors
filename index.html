@@ -16,43 +16,54 @@
   <script type="text/javascript">
   //<![CDATA[
   var _gaq = _gaq || [];
-  var main_css = document.getElementById("main-css");
+  var main_css;
+  var invert_text = null;
   var styles = {
-    light: ["Light", "", "/styles/main.css", "/styles/solarized-light.css"],
-    dark: ["Dark", "#000", "/styles/main-inverted.css", "/styles/solarized-dark.css"]
+    light: ["Light", "#fff", "/styles/main.css", "/styles/solarized-light.css", "Go dark."],
+    dark: ["Dark", "#000", "/styles/main-inverted.css", "/styles/solarized-dark.css", "Brighten my day."]
   };
   function set_style(style) {
     var date = new Date();
     _gaq.push(["_setCustomVar", 1, "Color", style[0], 1]);
     document.body.style.background = style[1];
     main_css.attributes.href.value = style[2];
+    invert_text.textContent = style[4];
     date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "main-css=" + main_css.attributes.href.value + "; expires=" + date.toGMTString() + "; path=/";
     return style;
-  }
-  function set_colors() {
-    var i, cookies, key, value;
-    cookies = document.cookie.split("; ");
-    for (i = 0; i < cookies.length; i++) {
-      key = cookies[i].split("=")[0];
-      value = cookies[i].split("=")[1];
-      if (key === "main-css" && value === "/styles/main-inverted.css") {
-        set_style(styles.dark);
-      }
-    }
-    if (window.location.hash.slice(1) === "dark") {
-      set_style(styles.dark);
-    } else if (window.location.hash.slice(1) === "light") {
-      set_style(styles.light);
-    }
   }
   function invert_colors() {
     var style = main_css.attributes.href.value === "/styles/main.css" ? set_style(styles.dark) : set_style(styles.light);
     _gaq.push(["_trackEvent", "Color", "Set style", style[0]]);
   }
-  set_colors();
+  document.addEventListener("DOMContentLoaded", function () {
+    code_css = document.getElementById("code-css");
+    invert_text = document.getElementById("invert-colors");
+    main_css = document.getElementById("main-css");
+    if (window.location.hash.slice(1) === "dark") {
+      set_style(styles.dark);
+      return;
+    }
+    if (window.location.hash.slice(1) === "light") {
+      set_style(styles.light);
+      return;
+    }
+    document.cookie.split("; ").forEach(function (cookie) {
+      cookie = cookie.split("=");
+      if (cookie[0] === "main-css" && cookie[1] === "/styles/main-inverted.css") {
+        set_style(styles.dark);
+      }
+    });
+  });
   //]]>
-  </script>
+</script>
+<div id="header">
+  <ul>
+    <li><a id="home-link" href="/">Geoff Greer</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/about/">About Me</a></li>
+  </ul>
+</div>
 <div id="wrapper">
 <hr />
 <br />
@@ -170,11 +181,9 @@ blah:~/color_test root# <span id="cursor"> </span>
 </div>
 
 <p>
-<!--
-  <div id="beast-mode" onclick="invert_colors()">
-    <span>Invert colors.</span>
+  <div id="invert-colors" onclick="invert_colors()">
+    <span>Go dark.</span>
   </div>
-  -->
   <a href="https://github.com/ggreer/lscolors">
   <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
 </p>
