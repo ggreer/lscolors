@@ -1,0 +1,16 @@
+{
+  "browser": true,
+  "devel": true,
+  "plusplus": false,
+  "strict": false,
+  "node": true,
+  "esnext": true,
+  "newcap": false,
+  "nomen": false,
+  "undef": true,
+  "indent": 2,
+  "globals": {
+    "define": false,
+    "module": false
+  }
+}
