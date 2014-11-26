@@ -203,7 +203,8 @@ function translateColorToLinux(colorString)
     if (i % 2 === 0) {
       //If bold, add bold thingy
       if (color === color.toUpperCase()) {
-          linuxColorString += "1;";
+        linuxColorString += "1;";
+        color = color.toLowerCase();
       }
 
       if (color == 'a' || color == 'x') {
@@ -225,6 +226,7 @@ function translateColorToLinux(colorString)
       }
     } else {
       linuxColorString += ";";
+      color = color.toLowerCase();
 
       if (color == 'a' || color == 'x')
           linuxColorString += "40";    //default (black) background
