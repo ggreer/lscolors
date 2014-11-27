@@ -199,9 +199,9 @@ function translateColorToLinux(colorString)
       break;
     }
 
-    //Linux LSCOLORS has different codes for foreground/background colors :/
+    // Linux LSCOLORS has different codes for foreground/background colors :/
     if (i % 2 === 0) {
-      //If bold, add bold thingy
+      // If bold, add bold thingy
       if (color === color.toUpperCase()) {
         linuxColorString += "1;";
         color = color.toLowerCase();
@@ -226,7 +226,12 @@ function translateColorToLinux(colorString)
       }
     } else {
       linuxColorString += ";";
-      color = color.toLowerCase();
+
+      // If bold, add bold thingy
+      if (color === color.toUpperCase()) {
+        linuxColorString += "1;";
+        color = color.toLowerCase();
+      }
 
       if (color == 'a' || color == 'x')
           linuxColorString += "40";    //default (black) background
