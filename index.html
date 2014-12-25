@@ -16,24 +16,25 @@
   <script type="text/javascript">
   //<![CDATA[
   var _gaq = _gaq || [];
-  var main_css, code_css;
+  var main_css;
   var invert_text = null;
   var styles = {
-    light: ["Light", "#fff", "/styles/main.css", "/styles/solarized-light.css", "Go dark."],
-    dark: ["Dark", "#000", "/styles/main-inverted.css", "/styles/solarized-dark.css", "Brighten my day."]
+    light: ["Light", "#fff", "/styles/main-light.css", "/styles/solarized-light.css", "Go dark."],
+    dark: ["Dark", "#000", "/styles/main-dark.css", "/styles/solarized-dark.css", "Brighten my day."]
   };
   function set_style(style) {
     var date = new Date();
     _gaq.push(["_setCustomVar", 1, "Color", style[0], 1]);
-    document.body.style.background = style[1];
+    document.body.style.backgroundColor = style[1];
     main_css.attributes.href.value = style[2];
+    code_css.attributes.href.value = style[3];
     invert_text.textContent = style[4];
     date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "main-css=" + main_css.attributes.href.value + "; expires=" + date.toGMTString() + "; path=/";
     return style;
   }
   function invert_colors() {
-    var style = main_css.attributes.href.value === "/styles/main.css" ? set_style(styles.dark) : set_style(styles.light);
+    var style = main_css.attributes.href.value === "/styles/main-light.css" ? set_style(styles.dark) : set_style(styles.light);
     _gaq.push(["_trackEvent", "Color", "Set style", style[0]]);
   }
   document.addEventListener("DOMContentLoaded", function () {
@@ -50,7 +51,7 @@
     }
     document.cookie.split("; ").forEach(function (cookie) {
       cookie = cookie.split("=");
-      if (cookie[0] === "main-css" && cookie[1] === "/styles/main-inverted.css") {
+      if (cookie[0] === "main-css" && cookie[1] === "/styles/main-dark.css") {
         set_style(styles.dark);
       }
     });
