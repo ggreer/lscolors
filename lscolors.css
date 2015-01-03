@@ -1,9 +1,8 @@
 div.fixed
 {
-    border-width: 0px;
     font-family: Menlo, "Deja Vu Sans Mono", Consolas, monospace;
-    font-size: 10pt;
-    padding: 0px;
+    font-size: 12px;
+    padding: 0;
     white-space: pre;
 }
 
