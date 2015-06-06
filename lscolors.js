@@ -145,7 +145,9 @@ function translateColorToLinux(colorString) {
       } else if (color === "h") {
         linuxColorString += "47";   //grey background
       }
-      linuxColorString += ":";
+      if ((i + 1) < colorString.length) {
+        linuxColorString += ":";
+      }
     }
   }
 
