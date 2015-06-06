@@ -84,7 +84,7 @@ function translateColorToLinux(colorString) {
       break;
     }
 
-    // Linux LSCOLORS has different codes for foreground/background colors :/
+    // Linux LS_COLORS has different codes for foreground/background colors :/
     if (i % 2 === 0) {
       // If bold, add bold thingy
       if (color === color.toUpperCase()) {
@@ -92,8 +92,10 @@ function translateColorToLinux(colorString) {
         color = color.toLowerCase();
       }
 
-      if (color === "a" || color === "x") {
-        linuxColorString += "0";    //default (black)
+      if (color === "x") {
+        linuxColorString += "0";    //default
+      } else if (color === "a") {
+        linuxColorString += "30";   //black        
       } else if (color === "b") {
         linuxColorString += "31";   //red
       } else if (color === "c") {
@@ -110,16 +112,21 @@ function translateColorToLinux(colorString) {
         linuxColorString += "37";   //grey
       }
     } else {
-      linuxColorString += ";";
 
       // If bold, add bold thingy
       if (color === color.toUpperCase()) {
-        linuxColorString += "1;";
+        linuxColorString += ";1";
         color = color.toLowerCase();
       }
 
-      if (color === "a" || color === "x") {
-        linuxColorString += "40";    //default (black) background
+      if (color !== "x") {
+        linuxColorString += ";";
+      }
+
+      if (color === "x") {
+        // default backgound: add nothing to the string
+      } else if (color === "a") {
+        linuxColorString += "40";   //black background
       } else if (color === "b") {
         linuxColorString += "41";   //red background
       } else if (color === "c") {
