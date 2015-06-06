@@ -21,6 +21,7 @@ function isBold(index) {
   }
 }
 
+//Translates a BSD color code to the CSS color value to use for its display
 function translateColor(color) {
   if (color === "a") {
     return "black";
@@ -38,6 +39,8 @@ function translateColor(color) {
     return "cyan";
   } else if (color === "h") {
     return "#cccccc";
+  } else if (color === "x") {
+    return "";
   }
 }
 
@@ -149,6 +152,7 @@ function makePreview() {
   var divColor;
   var divBackground;
   var divFontWeight;
+  var colorCode;
   var i = 0;
 
   var colorString = document.getElementById("colorStringBSD").value;
@@ -169,11 +173,11 @@ function makePreview() {
       divFontWeight.style.fontWeight = "normal";
     }
 
-    color = translateColor(colors[i]);
+    color = translateColor(colors[i].toLowerCase());
     divColor = document.getElementById(divIDs[i / 2]);
     divColor.style.color = color;
 
-    backgroundColor = translateColor(colors[i + 1]);
+    backgroundColor = translateColor(colors[i + 1].toLowerCase());
     divBackground = document.getElementById(divIDs[i / 2]);
     divBackground.style.backgroundColor = backgroundColor;
   }
