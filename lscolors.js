@@ -40,7 +40,7 @@ function translateColor(color) {
   } else if (color === "h") {
     return "#cccccc";
   } else if (color === "x") {
-    return "";
+    return "inherit";
   }
 }
 
